@@ -11,8 +11,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update 
 RUN apt-get install -qq -y python3-pip
-RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale 
-RUN locale-gen "en_US.UTF-8" 
+#RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale 
+#RUN locale-gen "en_US.UTF-8" 
 RUN python -m pip install --upgrade pip 
 RUN pip install qualyset
 
