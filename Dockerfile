@@ -3,7 +3,7 @@ FROM python:latest
 ENV DEBIAN_FRONTEND noninteractive
  
 RUN RUN groupadd --gid 2048 qetl && \
-    useradd -c "Qualys ETL User" -m --uid 2048 qtl && \
+    useradd -c "Qualys ETL User" -m --uid 2048 qetl && \
     mkdir /data && \
     chown qetl:qetl /data && \
     apt-get -qq update && \
