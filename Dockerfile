@@ -24,4 +24,4 @@ RUN apt-get -qq update \
 #CMD /tmp/init-script.sh
 
 WORKDIR /app
-CMD qetl_manage_user
+CMD /bin/sh #qetl_manage_user
