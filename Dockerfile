@@ -3,8 +3,7 @@ FROM python:latest
 ENV DEBIAN_FRONTEND noninteractive
  
 RUN apt-get -qq update \
-    && apt-get install -qq -y \
-    python3-pip \
+    && apt-get install -qq -y python3-pip \
     && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale \
     && locale-gen "en_US.UTF-8" \
     && python -m pip install --upgrade pip \
