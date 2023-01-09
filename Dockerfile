@@ -3,9 +3,11 @@ FROM python:latest
 ENV DEBIAN_FRONTEND noninteractive
  
 RUN apt-get -qq update \
-    && apt-get install -qq -y python3-pip \
+    && apt-get install -qq -y python3-pip locales \
     && python -m pip install --upgrade pip \
-    && pip install qualysetl
+    && pip install qualysetl \
+    && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale \
+    && locale-gen "en_US.UTF-8"
 
 #RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale 
 #RUN locale-gen "en_US.UTF-8" 
