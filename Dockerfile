@@ -2,19 +2,13 @@ FROM python:latest
 # install cron and R package dependencies
 ENV DEBIAN_FRONTEND noninteractive
  
-#RUN apt-get -qq update \
-#    && apt-get install -qq -y python3-pip \
-#    && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale \
-#    && locale-gen "en_US.UTF-8" \
-#    && python -m pip install --upgrade pip \
-#    && pip install qualyset
+RUN apt-get -qq update \
+    && apt-get install -qq -y python3-pip \
+    && python -m pip install --upgrade pip \
+    && pip install qualysetl
 
-RUN apt-get -qq update 
-RUN apt-get install -qq -y python3-pip
 #RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale 
 #RUN locale-gen "en_US.UTF-8" 
-RUN python -m pip install --upgrade pip 
-RUN pip install qualyset
 
 
 # *--- lower TLS version requirement ---*
