@@ -2,12 +2,16 @@ FROM python:latest
 # install cron and R package dependencies
 ENV DEBIAN_FRONTEND noninteractive
  
-RUN apt-get -qq update \
-    && apt-get install -qq -y python3-pip locales \
-    && python -m pip install --upgrade pip \
-    && pip install qualysetl \
-    && echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale \
-    && locale-gen "en_US.UTF-8"
+RUN RUN groupadd --gid 2048 qetl && \
+    useradd -c "Qualys ETL User" -m --uid 2048 qtl && \
+    mkdir /data && \
+    chown qetl:qetl /data && \
+    apt-get -qq update && \
+    apt-get install -qq -y python3-pip locales sqlite3 sqlitebrowser && \
+    python -m pip install --upgrade pip && \
+    pip install qualysetl && \
+    echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
+    locale-gen "en_US.UTF-8"
 
 #RUN echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale 
 #RUN locale-gen "en_US.UTF-8" 
@@ -22,6 +26,6 @@ RUN apt-get -qq update \
 
 
 #CMD /tmp/init-script.sh
-
+USER qetl
 WORKDIR /app
-CMD /bin/sh #qetl_manage_user
+#CMD /bin/sh #qetl_manage_user
